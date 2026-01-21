@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitbo - Bitcoin Stats & Data - Hlawn Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ECEBE4;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 100px;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4F46E5;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #4F46E5;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero-card {
+            background: linear-gradient(to bottom, #E8F4F8 0%, #D1EDF5 50%, #ECEBE4 100%);
+            border-radius: 40px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .hero-image {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Tags */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .tag-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+        }
+
+        /* Content Sections */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-card {
+            background: linear-gradient(to bottom, rgba(236, 235, 228, 0) 0%, #FAFAFA 15%, #FFFFFF 100%);
+            border-radius: 40px;
+            padding: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text {
+            font-size: 1.125rem;
+            color: #666;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .gallery-image.full-width {
+            grid-column: span 2;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #F5F5F2;
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 2rem;
+            background: #F5F5F2;
+            border-radius: 20px;
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3B82F6;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Next Project */
+        .next-project {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .next-project-card {
+            background: linear-gradient(135deg, #F5E6F5 0%, #EBCFEB 100%);
+            border-radius: 40px;
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .next-project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .next-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .next-title {
+            font-size: 2rem;
+        }
+
+        .next-arrow {
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-image.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="glass-nav">
+            <a href="../index.html" class="nav-logo">H</a>
+            <a href="../index.html#work" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Projects
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="hero-card">
+            <div class="hero-content">
+                <h1>Bitbo - Bitcoin Stats & Data</h1>
+                <p>A comprehensive cryptocurrency analytics platform designed to make complex blockchain data accessible and actionable for both novice and experienced traders.</p>
+                
+                <div class="project-tags">
+                    <span class="tag"><span class="tag-dot"></span> Research</span>
+                    <span class="tag"><span class="tag-dot"></span> UX/UI Design</span>
+                    <span class="tag"><span class="tag-dot"></span> Framer Development</span>
+                </div>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Client</span>
+                        <span class="meta-value">Bitbo Inc.</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">16 Weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Year</span>
+                        <span class="meta-value">2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800" alt="Bitbo Platform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <h2 class="section-title">The Challenge</h2>
+            <p class="section-text">
+                Cryptocurrency data is notoriously complex and overwhelming. Bitbo needed a platform that could present real-time blockchain analytics, market trends, and trading signals in a way that empowers users to make informed decisions without requiring a PhD in data science.
+            </p>
+            <p class="section-text">
+                Our mission was to transform raw data into visual insights, creating an experience that feels intuitive whether you're checking your first Bitcoin price or analyzing complex on-chain metrics.
+            </p>
+
+            <div class="image-gallery">
+                <div class="gallery-image full-width">
+                    <img src="https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&q=80&w=1600" alt="Dashboard Overview">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&q=80&w=800" alt="Charts View">
+                </div>
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=800" alt="Mobile App">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-text">
+                We designed a suite of features that cater to different user needs while maintaining a cohesive, professional aesthetic.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18"/>
+                            <path d="M18 9l-5 5-4-4-3 3"/>
+                        </svg>
+                    </div>
+                    <h3>Real-time Charts</h3>
+                    <p>Interactive candlestick and line charts with customizable timeframes and technical indicators.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Price Alerts</h3>
+                    <p>Smart notifications that keep users informed of significant price movements and market events.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18M9 21V9"/>
+                        </svg>
+                    </div>
+                    <h3>Portfolio Tracking</h3>
+                    <p>Comprehensive portfolio management with profit/loss calculations and historical performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>On-chain Analytics</h3>
+                    <p>Deep blockchain data analysis including whale movements, exchange flows, and network health.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <h2 class="section-title">Impact & Results</h2>
+            <p class="section-text">
+                Since launch, Bitbo has become a trusted resource for cryptocurrency enthusiasts and professional traders alike.
+            </p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">100K+</div>
+                    <div class="result-label">Monthly Active Users</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">4.9</div>
+                    <div class="result-label">User Satisfaction</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">2M+</div>
+                    <div class="result-label">Data Points Analyzed Daily</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">45%</div>
+                    <div class="result-label">Increase in User Engagement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <a href="digital-product.html" class="next-project-card">
+            <div>
+                <div class="next-label">Next Project</div>
+                <h2 class="next-title">Digital Product Design Solution</h2>
+            </div>
+            <div class="next-arrow">→</div>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Hlawn. Designed with passion.</p>
+    </footer>
+</body>
+</html>
