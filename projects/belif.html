@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belif - Repositioning for Gen Z America - Hlawn Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #F8FAF9;
+            --color-bg-warm: #F0F4F2;
+            --color-text: #1A1F1C;
+            --color-text-muted: #5C6B62;
+            --color-accent: #2D5A47;
+            --color-accent-light: #4A8B6F;
+            --color-border: rgba(26, 31, 28, 0.08);
+            --color-card: #FFFFFF;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* ===== NAVIGATION ===== */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 100px;
+            padding: 0.875rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 
+                0 1px 3px rgba(0, 0, 0, 0.02),
+                0 8px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .glass-nav:hover {
+            box-shadow: 
+                0 1px 3px rgba(0, 0, 0, 0.02),
+                0 12px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--color-accent);
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+            gap: 0.75rem;
+        }
+
+        .back-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-3px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .project-hero {
+            padding: 8rem 2rem 4rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-card {
+            background: linear-gradient(135deg, #FAFCFB 0%, #F0F7F4 100%);
+            border-radius: 48px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            border: 1px solid rgba(45, 90, 71, 0.08);
+            box-shadow: 
+                0 1px 2px rgba(0, 0, 0, 0.02),
+                0 20px 60px -20px rgba(45, 90, 71, 0.1);
+            animation: fadeInUp 1s var(--ease-out-expo) forwards;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s var(--ease-out-expo) 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--color-accent);
+        }
+
+        .hero-eyebrow span {
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .hero-description {
+            font-size: 1.0625rem;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            max-width: 540px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            background: rgba(45, 90, 71, 0.06);
+            border: 1px solid rgba(45, 90, 71, 0.12);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+        }
+
+        .meta-value {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            font-size: 0.9375rem;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+            animation: scaleIn 1s var(--ease-out-expo) 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, 
+                #1A1F1C 0%, 
+                #2D3B33 30%,
+                #3D4F44 60%,
+                #1A1F1C 100%);
+            box-shadow: 
+                0 25px 80px -20px rgba(26, 31, 28, 0.4),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .brand-logo-text {
+            font-family: var(--font-serif);
+            font-size: clamp(3.5rem, 8vw, 5rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-tagline {
+            font-size: 0.9375rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+            letter-spacing: 0.1em;
+        }
+
+        .brand-circle {
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .brand-circle::before {
+            content: 'believe';
+            position: absolute;
+            top: 15px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.2em;
+            text-transform: lowercase;
+        }
+
+        .brand-circle::after {
+            content: 'in truth';
+            position: absolute;
+            bottom: 15px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.2em;
+            text-transform: lowercase;
+        }
+
+        /* Floating elements */
+        .float-element {
+            position: absolute;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-element-1 {
+            width: 80px;
+            height: 80px;
+            top: -20px;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .float-element-2 {
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: -15px;
+            animation-delay: -2s;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-card {
+            background: linear-gradient(to bottom, rgba(248, 250, 249, 0) 0%, #FAFAFA 15%, #FFFFFF 100%);
+            border-radius: 32px;
+            padding: 4rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--color-accent);
+        }
+
+        .section-label span {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+        }
+
+        .content-card p {
+            font-size: 1.0625rem;
+            color: var(--color-text-muted);
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(45, 90, 71, 0.04) 0%, rgba(74, 139, 111, 0.06) 100%);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 16px 16px 0;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            font-size: 1.125rem;
+            color: var(--color-text);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Quote block */
+        .quote-block {
+            background: linear-gradient(135deg, rgba(45, 90, 71, 0.03) 0%, rgba(74, 139, 111, 0.05) 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+            border: 1px solid rgba(45, 90, 71, 0.08);
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--color-accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-family: var(--font-serif);
+            font-size: 1.375rem;
+            font-style: italic;
+            color: var(--color-text);
+            line-height: 1.6;
+            padding-left: 1rem;
+        }
+
+        /* Research methods table */
+        .methods-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .method-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 1.5rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(45, 90, 71, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(45, 90, 71, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .method-item:hover {
+            background: rgba(45, 90, 71, 0.06);
+            transform: translateX(4px);
+        }
+
+        .method-name {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .method-purpose {
+            color: var(--color-text-muted);
+        }
+
+        /* Insight cards */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .insight-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FAFCFB 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(45, 90, 71, 0.08);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(45, 90, 71, 0.15);
+            border-color: rgba(45, 90, 71, 0.15);
+        }
+
+        .insight-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .insight-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .insight-card p {
+            font-size: 0.9375rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Archetype cards */
+        .archetype-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .archetype-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAF9 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(45, 90, 71, 0.1);
+            text-align: center;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .archetype-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -15px rgba(45, 90, 71, 0.15);
+        }
+
+        .archetype-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+        }
+
+        .archetype-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .archetype-card p {
+            font-size: 0.9375rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Deliverables list */
+        .deliverables-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .deliverables-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .deliverables-list li:last-child {
+            border-bottom: none;
+        }
+
+        .deliverables-list li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .deliverables-list li span {
+            color: var(--color-text);
+            font-size: 1rem;
+        }
+
+        /* Reflect cards */
+        .reflect-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .reflect-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FAFCFB 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(45, 90, 71, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .reflect-card:hover {
+            border-color: rgba(45, 90, 71, 0.15);
+        }
+
+        .reflect-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .reflect-card p {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        /* Timeline summary */
+        .timeline-summary {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(45, 90, 71, 0.1);
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 120px 140px 1fr;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(45, 90, 71, 0.02);
+            border-bottom: 1px solid rgba(45, 90, 71, 0.06);
+        }
+
+        .timeline-row:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-row.header {
+            background: var(--color-accent);
+            color: white;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .timeline-phase {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .timeline-date {
+            color: var(--color-text-muted);
+            font-size: 0.9375rem;
+        }
+
+        .timeline-activity {
+            color: var(--color-text-muted);
+        }
+
+        /* Next steps */
+        .next-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        .next-step-card {
+            background: linear-gradient(135deg, rgba(45, 90, 71, 0.04) 0%, rgba(74, 139, 111, 0.06) 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(45, 90, 71, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .next-step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -10px rgba(45, 90, 71, 0.15);
+        }
+
+        .next-step-card h4 {
+            font-family: var(--font-sans);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .next-step-card p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Next project */
+        .next-project-card {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .next-project-card a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #F0F7F4 0%, #E8F2ED 100%);
+            border-radius: 24px;
+            padding: 2.5rem 3rem;
+            text-decoration: none;
+            border: 1px solid rgba(45, 90, 71, 0.1);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .next-project-card a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px -15px rgba(45, 90, 71, 0.2);
+        }
+
+        .next-project-info .next-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .next-project-info h2 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .next-arrow {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .next-project-card a:hover .next-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(to top, rgba(45, 90, 71, 0.03) 0%, transparent 100%);
+        }
+
+        footer p {
+            color: var(--color-text-muted);
+            font-size: 0.9375rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p:last-child {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--color-text);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 3rem;
+            }
+
+            .hero-visual {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .content-card {
+                padding: 3rem;
+            }
+
+            .insight-grid,
+            .archetype-grid,
+            .next-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .method-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .timeline-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .timeline-row.header {
+                display: none;
+            }
+
+            .next-project-card a {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .project-hero {
+                padding: 6rem 1rem 2rem;
+                min-height: auto;
+            }
+
+            .hero-card {
+                padding: 2rem;
+                border-radius: 32px;
+            }
+
+            .content-wrapper {
+                padding: 0 1rem;
+            }
+
+            .content-card {
+                padding: 2rem;
+                border-radius: 28px;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .glass-nav {
+                padding: 0.75rem 1.25rem;
+            }
+
+            .nav-logo {
+                font-size: 1.25rem;
+            }
+
+            .back-link {
+                font-size: 0.8125rem;
+            }
+
+            .project-meta {
+                gap: 1.5rem;
+            }
+
+            .hero-visual {
+                max-width: 280px;
+            }
+
+            .hero-image-container {
+                border-radius: 20px;
+            }
+
+            .insight-card,
+            .archetype-card,
+            .reflect-card,
+            .next-step-card {
+                padding: 1.5rem;
+            }
+
+            .next-project-card a {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .next-arrow {
+                margin: 0 auto;
+            }
+        }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(45, 90, 71, 0.2);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(45, 90, 71, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-inner">
+            <div class="glass-nav">
+                <a href="../index.html" class="nav-logo">Hlawn</a>
+                <a href="../index.html#work" class="back-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Projects
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="hero-wrapper">
+            <div class="hero-card">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        <span>Case Study</span>
+                    </div>
+                    <h1 class="hero-title">Belif</h1>
+                    <p class="hero-subtitle">Repositioning a Korean Skincare Brand for Gen Z America</p>
+                    <p class="hero-description">
+                        A deep consumer research initiative to help heritage Korean skincare brand Belif 
+                        understand and connect with American Gen Z — uncovering the tensions, motivations, 
+                        and identity work that shapes how young consumers relate to skincare.
+                    </p>
+                    <div class="hero-tags">
+                        <span class="hero-tag">User Research</span>
+                        <span class="hero-tag">Consumer Insights</span>
+                        <span class="hero-tag">Brand Strategy</span>
+                    </div>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">User Researcher</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Client</span>
+                            <span class="meta-value">Belif (LG H&H)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Timeline</span>
+                            <span class="meta-value">Sep 2025 – Present</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-image-container">
+                        <div class="brand-logo-container">
+                            <div class="brand-circle">
+                                <span class="brand-logo-text">belif</span>
+                            </div>
+                        </div>
+                        <div class="float-element float-element-1"></div>
+                        <div class="float-element float-element-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <div class="content-wrapper">
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Overview</span></div>
+                <h2 class="section-title">Beyond Product Benefits</h2>
+            </div>
+            <p>
+                Belif, a Korean skincare brand under LG H&H, has built strong brand loyalty in Korea. 
+                Now, they're looking to reposition for the US market — specifically targeting Gen Z 
+                consumers rather than their traditional millennial base.
+            </p>
+            <p>
+                Before Belif could reposition for the US, it needed to answer something more foundational: 
+                <strong>Who is Belif — not just in Korea, but in the eyes of American Gen Z?</strong> 
+                Who can it best serve? And how should it appear to this new audience?
+            </p>
+            <div class="highlight-box">
+                <p>
+                    This project pushed me to look beyond product benefits and into the deeper motivations, 
+                    tensions, and identity work that shapes how young consumers relate to skincare.
+                </p>
+            </div>
+            <p>
+                In an industry as saturated as beauty, the answers don't come from surveys alone — they 
+                come from observing what's said and unsaid, done and not done.
+            </p>
+        </div>
+
+        <!-- Context Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Context</span></div>
+                <h2 class="section-title">The Challenge</h2>
+            </div>
+            <p>
+                The skincare market is crowded. For a heritage Korean brand to break through with 
+                American Gen Z, Belif needed more than a product refresh — they needed to understand 
+                a new consumer from the ground up.
+            </p>
+            <p>
+                Korea HQ commissioned this research to inform a potential rebrand and US market strategy. 
+                The core questions:
+            </p>
+            <ul class="deliverables-list">
+                <li><span>Who can Belif best serve with its current and future products?</span></li>
+                <li><span>What do US consumers actually need and want from skincare?</span></li>
+                <li><span>What draws American Gen Z to a brand — beyond ingredients and efficacy?</span></li>
+            </ul>
+        </div>
+
+        <!-- Empathize Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Empathize</span></div>
+                <h2 class="section-title">Research Approach</h2>
+            </div>
+            <p>
+                I conducted research with <strong>50+ US-based Gen Z consumers</strong> through a mix of methods:
+            </p>
+            <div class="methods-grid">
+                <div class="method-item">
+                    <span class="method-name">Focus Groups</span>
+                    <span class="method-purpose">Surface shared attitudes, language, and social dynamics around skincare</span>
+                </div>
+                <div class="method-item">
+                    <span class="method-name">1:1 Interviews</span>
+                    <span class="method-purpose">Deep-dive into individual routines, values, and decision-making</span>
+                </div>
+                <div class="method-item">
+                    <span class="method-name">Lifestyle Research</span>
+                    <span class="method-purpose">Understand consumers holistically — not just as skincare buyers</span>
+                </div>
+                <div class="method-item">
+                    <span class="method-name">Product Testing</span>
+                    <span class="method-purpose">Evaluate existing Belif products and an unreleased new product</span>
+                </div>
+                <div class="method-item">
+                    <span class="method-name">Analytics Review</span>
+                    <span class="method-purpose">Ground qualitative insights in behavioral data from Belif</span>
+                </div>
+            </div>
+            <p>
+                Research was conducted through biweekly sessions with the Belif research team, ensuring 
+                continuous alignment between US insights and Korea HQ.
+            </p>
+            
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 2.5rem 0 1rem; color: var(--color-text);">
+                Why Lifestyle Research?
+            </h3>
+            <div class="quote-block">
+                <p class="quote-text">
+                    Consumers don't buy skincare in a vacuum. Their choices are shaped by identity, values, 
+                    social context, and life stage. By expanding beyond product-focused questions, we could 
+                    see how skincare fits into larger patterns of self-care, self-presentation, and aspiration.
+                </p>
+            </div>
+        </div>
+
+        <!-- Define Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Define</span></div>
+                <h2 class="section-title">Key Insights</h2>
+            </div>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <span class="insight-number">1</span>
+                    <h4>The Effortless-Intentional Tension</h4>
+                    <p>
+                        Consumers want to be intentional about their choices — deliberate, informed, in control. 
+                        But they also want to appear effortless — like good skin just happens. This tension shapes 
+                        everything from product selection to how they talk about routines publicly vs. privately.
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">2</span>
+                    <h4>Skincare as Relationship</h4>
+                    <p>
+                        Gen Z wants to buy from brands they can have a relationship with — not just a transaction. 
+                        They're drawn to brands with personality, values, and a sense of reciprocity.
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">3</span>
+                    <h4>Acne as Origin Story</h4>
+                    <p>
+                        For nearly every consumer we spoke with, acne was their introduction to skincare. It's a 
+                        shared entry point that shapes early attitudes, product choices, and even self-image.
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">4</span>
+                    <h4>Necessity vs. Indulgence</h4>
+                    <p>
+                        Consumers navigate between skincare as necessity (maintenance, problem-solving, discipline) 
+                        and skincare as indulgence (ritual, pleasure, self-care). Different consumers — and the 
+                        same consumer at different moments — lean into each framing.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archetypes Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Synthesis</span></div>
+                <h2 class="section-title">Consumer Archetypes</h2>
+            </div>
+            <p>
+                From the research, we developed three consumer archetypes representing distinct 
+                motivations and behaviors:
+            </p>
+            <div class="archetype-grid">
+                <div class="archetype-card">
+                    <div class="archetype-icon">🔬</div>
+                    <h4>The Mindful Explorer</h4>
+                    <p>Curious, research-driven, wants to understand what they're putting on their skin</p>
+                </div>
+                <div class="archetype-card">
+                    <div class="archetype-icon">✨</div>
+                    <h4>The Effortless Achiever</h4>
+                    <p>Wants results without complexity; values simplicity and efficiency</p>
+                </div>
+                <div class="archetype-card">
+                    <div class="archetype-icon">💫</div>
+                    <h4>The Validation Seeker</h4>
+                    <p>Motivated by social proof, community, and external affirmation</p>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-style: italic;">
+                These archetypes exist on a spectrum — consumers may embody traits from multiple types 
+                depending on context.
+            </p>
+            
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 2.5rem 0 1rem; color: var(--color-text);">
+                Deliverables
+            </h3>
+            <ul class="deliverables-list">
+                <li><span>3 consumer archetypes with behavioral profiles</span></li>
+                <li><span>3 detailed personas</span></li>
+                <li><span>Consumer journey maps</span></li>
+                <li><span>Insight report with key tensions</span></li>
+                <li><span>Prioritization matrix for strategic focus</span></li>
+            </ul>
+        </div>
+
+        <!-- Ideate Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Ideate</span></div>
+                <h2 class="section-title">From Archetypes to Strategy</h2>
+            </div>
+            <p>
+                The three archetypes informed three distinct branding pathways — each representing a 
+                different strategic direction for how Belif could position itself in the US market.
+            </p>
+            <div class="highlight-box">
+                <p>
+                    Rather than choosing one archetype to "win," the pathways explored how Belif's brand DNA 
+                    could authentically connect with each consumer type.
+                </p>
+            </div>
+            <p>
+                These pathways were presented to the Belif branding team in the US and Seoul, Korea 
+                in December 2025.
+            </p>
+        </div>
+
+        <!-- Test & Implement Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Test & Implement</span></div>
+                <h2 class="section-title">Stakeholder Response</h2>
+            </div>
+            <p>
+                The December presentation landed well. Stakeholders found strong alignment with the 
+                archetypes — the framework gave them shared language to discuss their target consumer.
+            </p>
+            <div class="highlight-box">
+                <p>
+                    <strong>The outcome:</strong> Belif chose to pursue two branding pathways simultaneously, 
+                    with the next phase focused on finding the intersection between them. The hypothesis is 
+                    that the overlap may reveal Belif's most authentic and differentiated positioning for Gen Z.
+                </p>
+            </div>
+            <p style="font-style: italic; color: var(--color-accent);">
+                This work is ongoing.
+            </p>
+        </div>
+
+        <!-- Reflect Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>Reflect</span></div>
+                <h2 class="section-title">Lessons Learned</h2>
+            </div>
+            <div class="reflect-grid">
+                <div class="reflect-card">
+                    <h4>On Challenge</h4>
+                    <p>
+                        The hardest part has been balancing existing brand equity with innovation. Belif has a 
+                        heritage and loyal base in Korea. The question isn't just "what do Gen Z want?" — it's 
+                        "how can Belif stay true to itself while evolving for a new consumer?" There's no formula 
+                        for that. It requires holding multiple truths at once.
+                    </p>
+                </div>
+                <div class="reflect-card">
+                    <h4>On Cross-Cultural Collaboration</h4>
+                    <p>
+                        Working across US and Korea teams taught me that communication is its own skill to learn 
+                        and relearn. The same way you'd learn Spanish to speak with a Spanish-speaking person, 
+                        a researcher must learn to speak in the language of their partners — whether that's 
+                        designers, marketers, or executives in Seoul. It's not always required, but when it 
+                        clicks, alignment follows.
+                    </p>
+                </div>
+                <div class="reflect-card">
+                    <h4>On the Craft</h4>
+                    <p>
+                        This project reinforced why I love research. Skincare is saturated. The answers aren't 
+                        sitting on the surface. You have to listen for what's said and not said, observe what's 
+                        done and not done. You have to care about people beyond the transaction. That's the work.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- What's Next Section -->
+        <div class="content-card animate-on-scroll">
+            <div class="section-header">
+                <div class="section-label"><span>What's Next</span></div>
+                <h2 class="section-title">The Road Ahead</h2>
+            </div>
+            <div class="next-steps">
+                <div class="next-step-card">
+                    <h4>Intersection Mapping</h4>
+                    <p>Explore the intersection of the two selected branding pathways</p>
+                </div>
+                <div class="next-step-card">
+                    <h4>Positioning Refinement</h4>
+                    <p>Refine positioning recommendations for Belif's US relaunch</p>
+                </div>
+                <div class="next-step-card">
+                    <h4>Execution Support</h4>
+                    <p>Support the transition from research to brand and marketing execution</p>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 2.5rem 0 1rem; color: var(--color-text);">
+                Project Timeline
+            </h3>
+            <div class="timeline-summary">
+                <div class="timeline-row header">
+                    <span>Phase</span>
+                    <span>Timeline</span>
+                    <span>Key Activity</span>
+                </div>
+                <div class="timeline-row">
+                    <span class="timeline-phase">Research</span>
+                    <span class="timeline-date">Sep – Dec 2025</span>
+                    <span class="timeline-activity">50+ participant study; focus groups, interviews, product testing</span>
+                </div>
+                <div class="timeline-row">
+                    <span class="timeline-phase">Synthesis</span>
+                    <span class="timeline-date">Nov – Dec 2025</span>
+                    <span class="timeline-activity">Archetypes, personas, journey maps, insight reports</span>
+                </div>
+                <div class="timeline-row">
+                    <span class="timeline-phase">Strategy</span>
+                    <span class="timeline-date">Dec 2025</span>
+                    <span class="timeline-activity">Presented 3 branding pathways to US and Seoul teams</span>
+                </div>
+                <div class="timeline-row">
+                    <span class="timeline-phase">Next Phase</span>
+                    <span class="timeline-date">Jan 2026+</span>
+                    <span class="timeline-activity">Intersection mapping; positioning refinement</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Project -->
+    <div class="next-project-card">
+        <a href="arfi.html">
+            <div class="next-project-info">
+                <div class="next-label">Next Project</div>
+                <h2>ARFI - Language Learning App</h2>
+            </div>
+            <div class="next-arrow">→</div>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Hlawn. Designed with passion.</p>
+        <p>Designer by training. Researcher by instinct. Strategist by obsession.</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
