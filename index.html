@@ -665,7 +665,7 @@
         }
 
         /* ========================================
-           DESIGN THINKING PROCESS SECTION
+           HOW I WORK SECTION
         ======================================== */
         .process-section {
             padding: 6rem 0;
@@ -673,202 +673,143 @@
         }
 
         .process-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         .process-header {
-            text-align: center;
             margin-bottom: 4rem;
+            max-width: 700px;
         }
 
         .process-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
             color: #1A1A1A;
+            line-height: 1.2;
         }
 
         .process-header p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.0625rem;
         }
 
-        /* Circular Process Layout */
-        .design-thinking-wrapper {
+        /* Process Timeline */
+        .process-timeline {
             position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* Phase Labels */
-        .phase-labels {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            padding: 0 3rem;
+            flex-direction: column;
+            gap: 0;
         }
 
-        .phase-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 0.5rem 1.25rem;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .phase-label.understand {
-            background: linear-gradient(135deg, #E8F4FC 0%, #D4EAF7 100%);
-            color: #2B7BB9;
-        }
-
-        .phase-label.explore {
-            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
-            color: #D97706;
-        }
-
-        .phase-label.materialize {
-            background: linear-gradient(135deg, #F5E6F5 0%, #EBCCEB 100%);
-            color: #9B2C7D;
-        }
-
-        /* Process Steps Grid */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .process-step {
-            background: white;
-            border-radius: 24px;
-            padding: 2rem;
-            border: 1px solid rgba(0,0,0,0.06);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .process-step::before {
+        .process-timeline::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            border-radius: 24px 24px 0 0;
-            transition: height 0.3s ease;
+            left: 24px;
+            top: 48px;
+            bottom: 48px;
+            width: 1px;
+            background: linear-gradient(to bottom, #E0DFD8 0%, #C8C6BC 50%, #E0DFD8 100%);
         }
 
-        .process-step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.12);
+        .process-phase {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 2.5rem;
+            padding: 2.5rem 0;
+            position: relative;
         }
 
-        /* Step Colors */
-        .process-step.empathize::before { background: #4A90C2; }
-        .process-step.define::before { background: #2B7BB9; }
-        .process-step.ideate::before { background: #F97316; }
-        .process-step.prototype::before { background: #EAB308; }
-        .process-step.test::before { background: #B8860B; }
-        .process-step.implement::before { background: #B91C7D; }
-
-        .process-step:hover::before {
-            height: 6px;
+        .process-phase:first-child {
+            padding-top: 0;
         }
 
-        .step-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
+        .process-phase:last-child {
+            padding-bottom: 0;
         }
 
-        .process-step:hover .step-icon {
-            transform: scale(1.1);
-        }
-
-        .process-step.empathize .step-icon { background: linear-gradient(135deg, #E8F4FC 0%, #D4EAF7 100%); }
-        .process-step.define .step-icon { background: linear-gradient(135deg, #D4EAF7 0%, #B8DCF0 100%); }
-        .process-step.ideate .step-icon { background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%); }
-        .process-step.prototype .step-icon { background: linear-gradient(135deg, #FEF9C3 0%, #FDE68A 100%); }
-        .process-step.test .step-icon { background: linear-gradient(135deg, #F5E6D3 0%, #E8D5B8 100%); }
-        .process-step.implement .step-icon { background: linear-gradient(135deg, #F5E6F5 0%, #EBCCEB 100%); }
-
-        .step-number {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            color: #999;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .process-step h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.375rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #1A1A1A;
-        }
-
-        .process-step p {
-            font-size: 0.9375rem;
-            color: #666;
-            line-height: 1.65;
-        }
-
-        /* Flow arrows between steps */
-        .process-flow {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin: 2rem 0;
-        }
-
-        .flow-arrow {
-            width: 32px;
-            height: 32px;
+        .phase-marker {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: #F5F5F0;
+            background: #ECEBE4;
+            border: 3px solid #D8D6CC;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999;
-            font-size: 0.875rem;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
         }
 
-        /* Center label */
-        .process-center-label {
-            text-align: center;
-            margin-top: 2.5rem;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(249, 249, 247, 0.8) 0%, rgba(236, 235, 228, 0.6) 100%);
-            border-radius: 16px;
-            border: 1px solid rgba(0,0,0,0.04);
+        .process-phase:hover .phase-marker {
+            background: #1A1A1A;
+            border-color: #1A1A1A;
         }
 
-        .process-center-label h4 {
+        .phase-marker span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1A1A1A;
+            transition: color 0.4s ease;
+        }
+
+        .process-phase:hover .phase-marker span {
+            color: white;
+        }
+
+        .phase-content {
+            padding-top: 0.5rem;
+        }
+
+        .phase-content h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 500;
             color: #1A1A1A;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
         }
 
-        .process-center-label p {
-            font-size: 0.875rem;
-            color: #888;
+        .process-phase:hover .phase-content h3 {
+            color: #333;
+        }
+
+        .phase-content p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.75;
+            max-width: 580px;
+        }
+
+        /* Process Note */
+        .process-note {
+            margin-top: 4rem;
+            padding: 2rem 2.5rem;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .process-note::before {
+            content: '→';
+            font-size: 1.25rem;
+            color: #999;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .process-note p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
             font-style: italic;
         }
 
@@ -1269,15 +1210,12 @@
                 padding: 4rem 0;
             }
 
-            .process-steps {
-                grid-template-columns: repeat(2, 1fr);
+            .process-header h2 {
+                font-size: 2.25rem;
             }
 
-            .phase-labels {
-                justify-content: center;
-                gap: 1rem;
-                flex-wrap: wrap;
-                padding: 0;
+            .process-phase {
+                gap: 2rem;
             }
 
             .process-header h2 {
@@ -1543,30 +1481,52 @@
                 padding: 3rem 0;
             }
 
-            .process-header h2 {
-                font-size: 2rem;
+            .process-header {
+                margin-bottom: 2.5rem;
             }
 
-            .process-steps {
-                grid-template-columns: 1fr;
+            .process-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .process-header p {
+                font-size: 1rem;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-phase {
+                grid-template-columns: 40px 1fr;
+                gap: 1.25rem;
+                padding: 1.5rem 0;
+            }
+
+            .phase-marker {
+                width: 40px;
+                height: 40px;
+            }
+
+            .phase-marker span {
+                font-size: 1rem;
+            }
+
+            .phase-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .phase-content p {
+                font-size: 0.9375rem;
+            }
+
+            .process-note {
+                padding: 1.5rem;
                 gap: 1rem;
             }
 
-            .process-step {
-                padding: 1.5rem;
-            }
-
-            .phase-labels {
-                gap: 0.5rem;
-            }
-
-            .phase-label {
-                font-size: 0.625rem;
-                padding: 0.375rem 0.875rem;
-            }
-
-            .process-center-label h4 {
-                font-size: 1.25rem;
+            .process-note p {
+                font-size: 0.9375rem;
             }
 
             .process-container {
@@ -1957,74 +1917,50 @@
     </section>
 
     
-    <!-- Design Thinking Process Section -->
+    <!-- How I Work Section -->
     <section id="process" class="process-section">
         <div class="process-container">
             <div class="process-header fade-up">
-                <h2>Design Thinking</h2>
-                <p>A human-centered approach to innovation that draws from the designer's toolkit to integrate the needs of people, the possibilities of technology, and the requirements for business success.</p>
+                <h2>How I Work</h2>
+                <p>Every project is different, but my approach stays grounded in the same truth: you have to care about people beyond the transaction. Here's how I move from questions to clarity.</p>
             </div>
             
-            <div class="design-thinking-wrapper">
-                <!-- Phase Labels -->
-                <div class="phase-labels fade-up">
-                    <span class="phase-label understand">Understand</span>
-                    <span class="phase-label explore">Explore</span>
-                    <span class="phase-label materialize">Materialize</span>
-                </div>
-
-                <!-- Process Steps -->
-                <div class="process-steps">
-                    <div class="process-step empathize fade-up">
-                        <div class="step-icon">💗</div>
-                        <div class="step-number">Step 01</div>
-                        <h3>Empathize</h3>
-                        <p>Conduct research to develop an understanding of your users and their needs, motivations, and pain points.</p>
-                    </div>
-                    <div class="process-step define fade-up">
-                        <div class="step-icon">🔍</div>
-                        <div class="step-number">Step 02</div>
-                        <h3>Define</h3>
-                        <p>Combine all your research and observe where your users' problems exist. Identify the core challenge to address.</p>
-                    </div>
-                    <div class="process-step ideate fade-up">
-                        <div class="step-icon">💡</div>
-                        <div class="step-number">Step 03</div>
-                        <h3>Ideate</h3>
-                        <p>Generate a range of crazy, creative ideas. Challenge assumptions and create innovative solutions.</p>
-                    </div>
-                    <div class="process-step prototype fade-up">
-                        <div class="step-icon">🛠️</div>
-                        <div class="step-number">Step 04</div>
-                        <h3>Prototype</h3>
-                        <p>Build real, tactile representations for a range of your ideas to investigate the problem and solutions.</p>
-                    </div>
-                    <div class="process-step test fade-up">
-                        <div class="step-icon">✓</div>
-                        <div class="step-number">Step 05</div>
-                        <h3>Test</h3>
-                        <p>Return to your users for feedback. Learn what works and what doesn't, then iterate and refine.</p>
-                    </div>
-                    <div class="process-step implement fade-up">
-                        <div class="step-icon">🚀</div>
-                        <div class="step-number">Step 06</div>
-                        <h3>Implement</h3>
-                        <p>Put the vision into effect. Launch your solution and continue gathering feedback for improvement.</p>
+            <div class="process-timeline">
+                <div class="process-phase fade-up">
+                    <div class="phase-marker"><span>1</span></div>
+                    <div class="phase-content">
+                        <h3>Listen First</h3>
+                        <p>I start by getting curious. Who are we designing for? What do they actually need — not what we assume they need? I conduct research, run interviews, and sit with the discomfort of not knowing. The answers aren't on the surface. You have to listen for what's said and unsaid.</p>
                     </div>
                 </div>
 
-                <!-- Flow Indicator -->
-                <div class="process-flow fade-up">
-                    <span class="flow-arrow">→</span>
-                    <span class="flow-arrow">→</span>
-                    <span class="flow-arrow">→</span>
+                <div class="process-phase fade-up">
+                    <div class="phase-marker"><span>2</span></div>
+                    <div class="phase-content">
+                        <h3>Find the Real Problem</h3>
+                        <p>Research generates a lot of data. My job is to find the signal in the noise — the insight that reframes the challenge. Sometimes the problem you were asked to solve isn't the problem worth solving. This phase is about getting that clarity.</p>
+                    </div>
                 </div>
 
-                <!-- Center Label -->
-                <div class="process-center-label fade-up">
-                    <h4>Iterate & Evolve</h4>
-                    <p>Design thinking is not linear — each phase informs the others</p>
+                <div class="process-phase fade-up">
+                    <div class="phase-marker"><span>3</span></div>
+                    <div class="phase-content">
+                        <h3>Explore Possibilities</h3>
+                        <p>With a clear problem, I explore solutions. I sketch, I prototype, I test early ideas with real people. I'm not precious about my work here — the goal is learning, not perfection. Some ideas fail fast. That's the point.</p>
+                    </div>
                 </div>
+
+                <div class="process-phase fade-up">
+                    <div class="phase-marker"><span>4</span></div>
+                    <div class="phase-content">
+                        <h3>Refine & Ship</h3>
+                        <p>The final phase is about craft. Polishing the details. Making sure the solution doesn't just work, but feels right. Then we ship — and keep listening. Because good design is never really done.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-note fade-up">
+                <p>This isn't a linear path. I move between phases as the work demands. The best insights often come from going back — revisiting assumptions, re-interviewing users, reimagining the brief.</p>
             </div>
         </div>
     </section>
