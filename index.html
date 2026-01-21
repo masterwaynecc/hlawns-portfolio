@@ -454,7 +454,6 @@
         .project-card:nth-child(1) { z-index: 1; }
         .project-card:nth-child(2) { z-index: 2; top: 120px; }
         .project-card:nth-child(3) { z-index: 3; top: 140px; }
-        .project-card:nth-child(4) { z-index: 4; top: 160px; }
         
         /* Scale down effect when card is superseded */
         .project-card.scaled-down {
@@ -558,6 +557,41 @@
 
         .project-card:hover .project-image img {
             transform: scale(1.05);
+        }
+
+        /* Stealth Startup Card */
+        .stealth-card .stealth-note {
+            font-size: 0.9375rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .stealth-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #F5F4F0 0%, #E8E7E0 100%);
+            border-radius: 20px;
+            min-height: 300px;
+        }
+
+        .stealth-icon {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .stealth-icon span {
+            font-size: 3rem;
+            color: #C8C6BC;
         }
 
         /* ========================================
@@ -1397,7 +1431,6 @@
             .project-card:nth-child(1) { top: 80px; }
             .project-card:nth-child(2) { top: 90px; }
             .project-card:nth-child(3) { top: 100px; }
-            .project-card:nth-child(4) { top: 110px; }
 
             .project-card-inner {
                 padding: 1.25rem;
@@ -1713,7 +1746,7 @@
                 
                 <a href="#work" class="nav-link">Projects</a>
                 <a href="#process" class="nav-link">Process</a>
-                <a href="#experience" class="nav-link">Playground</a>
+                <a href="playground.html" class="nav-link">Playground</a>
                 
                 </div>
             <div class="nav-actions">
@@ -1858,56 +1891,23 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card stealth-card">
                     <div class="project-card-inner">
                         <div class="project-content">
-                            <h3>Digital Product Design Solution</h3>
-                            <p>With user-centered approach, the goals was to create an intuitive interface for effortless financial management while incorporating gamification.</p>
+                            <h3>UI/UX for a Stealth Startup</h3>
+                            <p>Currently working on product design for an early-stage startup in stealth mode. The work spans user research, interaction design, and design systems — but I can't share details publicly just yet.</p>
                             <div class="project-tags">
-                                <span class="project-tag"><span class="project-tag-dot"></span> UX Audit</span>
-                                <span class="project-tag"><span class="project-tag-dot"></span> Design System</span>
-                                <span class="project-tag"><span class="project-tag-dot"></span> High-fidelity Prototyping</span>
-            </div>
-                            <a href="projects/digital-product.html" class="project-link">
-                                View Project
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                </div>
-                        <div class="project-images">
-                            <div class="project-image">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Project">
-                </div>
-                            <div class="project-image">
-                                <img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=800" alt="Project">
-                </div>
-                </div>
-            </div>
-        </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-card-inner">
-                        <div class="project-content">
-                            <h3>Design for Internet Sharing App</h3>
-                            <p>With user-centered approach, the goals was to create an intuitive interface for effortless financial management while incorporating gamification.</p>
-                            <div class="project-tags">
+                                <span class="project-tag"><span class="project-tag-dot"></span> Product Design</span>
+                                <span class="project-tag"><span class="project-tag-dot"></span> Design Systems</span>
                                 <span class="project-tag"><span class="project-tag-dot"></span> User Research</span>
-                                <span class="project-tag"><span class="project-tag-dot"></span> UX/UI Design</span>
-                                <span class="project-tag"><span class="project-tag-dot"></span> User Testing</span>
-                </div>
-                            <a href="projects/internet-sharing.html" class="project-link">
-                                View Project
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                </div>
-                        <div class="project-images">
-                            <div class="project-image">
-                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" alt="Project">
-            </div>
-                            <div class="project-image">
-                                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800" alt="Project">
-                    </div>
-                </div>
+                            </div>
+                            <p class="stealth-note">Curious? Let's talk — I'm happy to share more in an interview.</p>
+                        </div>
+                        <div class="project-images stealth-visual">
+                            <div class="stealth-icon">
+                                <span>✦</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                     </div>

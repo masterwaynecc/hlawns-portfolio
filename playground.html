@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground - Hlawn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ECEBE4;
+            color: #1A1A1A;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #1A1A1A;
+        }
+
+        .back-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        .coming-soon-card {
+            max-width: 560px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            padding: 4rem 3rem;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #D4C4B0 0%, #A89080 50%, #D4C4B0 100%);
+        }
+
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #F5F4F0 0%, #E8E7E0 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .coming-soon-card h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .coming-soon-card p {
+            color: #666;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: #E0DFD8;
+            margin: 0 auto 2rem;
+        }
+
+        .hint {
+            font-size: 0.875rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Floating decorative elements */
+        .float-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .float-1 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 196, 176, 0.3) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+        }
+
+        .float-2 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(168, 144, 128, 0.2) 0%, transparent 70%);
+            bottom: -75px;
+            left: -75px;
+        }
+
+        @media (max-width: 640px) {
+            .coming-soon-card {
+                padding: 3rem 2rem;
+                border-radius: 24px;
+            }
+
+            .coming-soon-card h1 {
+                font-size: 2rem;
+            }
+
+            .coming-soon-card p {
+                font-size: 1rem;
+            }
+
+            .back-link {
+                top: 1.5rem;
+                left: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Home
+    </a>
+
+    <div class="coming-soon-card">
+        <div class="float-element float-1"></div>
+        <div class="float-element float-2"></div>
+        
+        <div class="icon-container">✦</div>
+        
+        <h1>Playground</h1>
+        <p>A space for experiments, side projects, and creative explorations. Currently under construction.</p>
+        
+        <div class="divider"></div>
+        
+        <p class="hint">Check back soon — or reach out if you're curious.</p>
+    </div>
+</body>
+</html>
