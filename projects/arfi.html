@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARFI - Language Learning App for Chin Refugees - Hlawn Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ECEBE4;
+            color: #1a1a1a;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 100px;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4F46E5;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #4F46E5;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero-card {
+            background: linear-gradient(to bottom, #FFF5E6 0%, #FFE8CC 50%, #ECEBE4 100%);
+            border-radius: 40px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content > p {
+            font-size: 1.125rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .hero-image {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #FFB347 0%, #FF6B6B 50%, #4ECDC4 100%);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-placeholder {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-image-placeholder .app-name {
+            font-size: 4rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-image-placeholder .app-meaning {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Tags */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .tag-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+        }
+
+        /* Content Sections */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-card {
+            background: linear-gradient(to bottom, rgba(236, 235, 228, 0) 0%, #FAFAFA 15%, #FFFFFF 100%);
+            border-radius: 40px;
+            padding: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #F59E0B;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text {
+            font-size: 1.125rem;
+            color: #555;
+            max-width: 900px;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .highlight-box p {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .highlight-stat {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #F59E0B;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Quote */
+        .quote-block {
+            background: #F5F5F2;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: #E5E5E0;
+            position: absolute;
+            top: 0.5rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #555;
+            padding-left: 2rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #E5E5E0;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-phase {
+            min-width: 120px;
+            font-weight: 600;
+            color: #F59E0B;
+        }
+
+        .timeline-date {
+            min-width: 180px;
+            color: #888;
+        }
+
+        .timeline-content {
+            flex: 1;
+            color: #555;
+        }
+
+        /* Process Grid */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .process-card {
+            background: #F5F5F2;
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .process-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #E5E5E0;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .process-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Insight Cards */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .insight-card {
+            background: #F5F5F2;
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .insight-card h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .insight-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #F5F5F2;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #FFB347, #FF6B6B);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Tools Table */
+        .tools-table {
+            width: 100%;
+            margin-top: 1.5rem;
+            border-collapse: collapse;
+        }
+
+        .tools-table th,
+        .tools-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #E5E5E0;
+        }
+
+        .tools-table th {
+            font-weight: 600;
+            color: #888;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tools-table td {
+            color: #555;
+        }
+
+        .tools-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Feedback Cards */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feedback-card {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .feedback-card p {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: #1a1a1a;
+        }
+
+        /* What's Next */
+        .next-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .next-step-card {
+            background: #F5F5F2;
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .next-step-card .timeframe {
+            font-size: 0.875rem;
+            color: #F59E0B;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .next-step-card h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .next-step-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Next Project */
+        .next-project {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .next-project-card {
+            background: linear-gradient(135deg, #E8F4F8 0%, #D1EDF5 100%);
+            border-radius: 40px;
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .next-project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .next-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .next-title {
+            font-size: 2rem;
+        }
+
+        .next-arrow {
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #666;
+        }
+
+        .tagline {
+            font-style: italic;
+            margin-top: 0.5rem;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .process-grid,
+            .insight-grid,
+            .next-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="glass-nav">
+            <a href="../index.html" class="nav-logo">H</a>
+            <a href="../index.html#work" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Projects
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="hero-card">
+            <div class="hero-content">
+                <h1>ARFI</h1>
+                <p class="hero-subtitle">An English and Hakha-Chin Language Learning App</p>
+                <p>An AI-powered language learning app built for Chin refugee students displaced by Myanmar's military coup. ARFI — meaning "star" in Hakha-Chin — bridges Hakha-Chin and English through a dictionary, flashcards, and translator.</p>
+                
+                <div class="project-tags">
+                    <span class="tag"><span class="tag-dot"></span> Research Lead</span>
+                    <span class="tag"><span class="tag-dot"></span> Product Design</span>
+                    <span class="tag"><span class="tag-dot"></span> App Development</span>
+                </div>
+
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Research Lead & Head of Product</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Partner</span>
+                        <span class="meta-value">Thantlang Council International</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">Dec 2023 – Present</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">
+                    <div class="app-name">ARFI</div>
+                    <div class="app-meaning">"Star" in Hakha-Chin</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Context</div>
+            <h2 class="section-title">A Community in Crisis</h2>
+            <p class="section-text">
+                On February 1, 2021, Myanmar's military seized power in a coup, arresting civilian leaders and triggering mass protests. The junta responded with lethal force — live ammunition, airstrikes, and a scorched-earth campaign that has since displaced over 3.2 million people.
+            </p>
+            <p class="section-text">
+                Chin State, in Myanmar's northwest, was among the hardest hit. In September 2021, the military shelled and burned Thantlang, forcing all 10,000 residents to flee. More than 160,000 Chin people — over a third of the state's population — have been displaced, with over 70,000 seeking refuge across the border in India's Mizoram State.
+            </p>
+            
+            <div class="highlight-box">
+                <p>Schools shut down. Homes burned. Life halted for an entire generation of students.</p>
+            </div>
+
+            <p class="section-text">
+                This project began as open-ended research into the needs of a displaced community and evolved into a shipped product now preparing for formal partnership with Chin State's education governance team.
+            </p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Project Timeline</div>
+            <h2 class="section-title">From Research to Product</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-phase">Phase 1</div>
+                    <div class="timeline-date">December 2023</div>
+                    <div class="timeline-content">Initial Research — First field visit with broad discovery and 50+ interviews</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">Phase 2</div>
+                    <div class="timeline-date">June – September 2024</div>
+                    <div class="timeline-content">Follow-up Research — Deep-dive research, prioritization, and refined problem definition</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">Phase 3</div>
+                    <div class="timeline-date">October 2025 – Present</div>
+                    <div class="timeline-content">App Development — Independent build of dictionary, flashcards, and translator launching February 2026</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empathize Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Empathize</div>
+            <h2 class="section-title">On-the-Ground Research</h2>
+            <p class="section-text">
+                I partnered with Thantlang Council International to conduct field research. At the time, no formal research reports existed on this community's needs post-displacement. We entered with broad "How Might We" questions:
+            </p>
+            <ul class="section-text" style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li>How might we support the resilience of Chin refugees?</li>
+                <li>How might we design infrastructure to meet their unmet needs?</li>
+                <li>How might we address the mental health challenges facing displaced families?</li>
+            </ul>
+            <p class="section-text">
+                Across two research trips, I led interviews, focus groups, site visits, and ethnographic observation with over 150 community members: students, teachers, parents, and local leaders.
+            </p>
+
+            <h3 style="font-size: 1.5rem; margin: 2rem 0 1rem;">Unexpected Insights</h3>
+            
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <h4>Research itself was unfamiliar territory</h4>
+                    <p>The concept of academic research doesn't translate easily in Hakha-Chin culture. Asking questions about things we ostensibly already know came across as rude. We had to reframe every session: positioning ourselves as strangers, emphasizing that honesty wouldn't offend us. What we expected to take minutes took hours.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>Students showed up with hope, not despair</h4>
+                    <p>We anticipated conversations dominated by trauma and survival. Instead, young people arrived with energy and ambition. One student told us he wanted to become a billionaire. These weren't broken kids waiting to be saved — they were dreamers waiting for tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Define Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Define</div>
+            <h2 class="section-title">Finding Focus</h2>
+            <p class="section-text">
+                After the first trip, we had a long list of potential intervention areas: healthcare, food security, mental health, infrastructure. During the second trip, we used a prioritization matrix — plotting urgency against long-term return on investment — to narrow our focus.
+            </p>
+            
+            <div class="highlight-box">
+                <p class="highlight-stat">100%</p>
+                <p>of the students we interviewed wanted to learn English.</p>
+            </div>
+
+            <p class="section-text">
+                These kids are already polyglots by necessity. By the time they've fled, most have learned Hakha-Chin (native), Burmese (schooling in Myanmar), Mizo (to navigate Mizoram), and Hindi (state mandate in India). They're digital natives with easy access to phones — but almost no platforms serve them in their own language.
+            </p>
+            <p class="section-text">
+                Existing apps like Duolingo fail this community for a simple reason: they aren't culturally relevant. The content doesn't reflect their lives, their context, or their identity.
+            </p>
+
+            <div class="quote-block">
+                <p class="quote-text">How might we empower Chin refugee students to excel in their studies — starting with English?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideate Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Ideate</div>
+            <h2 class="section-title">Exploring Solutions</h2>
+            <p class="section-text">
+                We explored several directions:
+            </p>
+            
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">01</div>
+                    <h3>Teacher Training Programs</h3>
+                    <p>Ruled out: temporary fix that treats students as end users rather than empowered participants.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">02</div>
+                    <h3>Financial Stipends</h3>
+                    <p>Ruled out: lacks sustainable development path and doesn't address the core learning need.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">03</div>
+                    <h3>Curriculum Design Support</h3>
+                    <p>Ruled out: dependent on existing institutional structures that are disrupted.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">04</div>
+                    <h3>Language Learning Platform</h3>
+                    <p>Selected: built in Hakha-Chin, accessible on phones, designed for self-directed learning. Most scalable and student-centered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Build Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Prototype & Implement</div>
+            <h2 class="section-title">Building ARFI</h2>
+            <p class="section-text">
+                Following the research phase, internal reorganization within TCI put the project on hold. The insights we'd gathered risked sitting in a report, unrealized. I asked for permission to continue building — and got it.
+            </p>
+            <p class="section-text">
+                We digitized vocabulary using an existing Hakha-Chin dictionary written by David VanBik, a linguist and — as it happens — my grandfather (my uncle's father). This gave us a credible foundation to build from.
+            </p>
+
+            <h3 style="font-size: 1.5rem; margin: 2rem 0 1rem;">Technical Stack</h3>
+            <table class="tools-table">
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Claude, Gemini</td>
+                        <td>Brainstorming, problem-solving</td>
+                    </tr>
+                    <tr>
+                        <td>Lovable</td>
+                        <td>Rapid prototyping</td>
+                    </tr>
+                    <tr>
+                        <td>Cursor, Claude</td>
+                        <td>Coding the app</td>
+                    </tr>
+                    <tr>
+                        <td>Supabase</td>
+                        <td>Database and backend</td>
+                    </tr>
+                    <tr>
+                        <td>GitHub</td>
+                        <td>Version control and hosting</td>
+                    </tr>
+                    <tr>
+                        <td>ElevenLabs</td>
+                        <td>Voice generation for audio features</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: 1.5rem; margin: 2rem 0 1rem;">Core Features (v1)</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Dictionary</h3>
+                    <p>Hakha-Chin ↔ English lookup with audio pronunciation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎴</div>
+                    <h3>Flashcards</h3>
+                    <p>Categorized vocabulary: animals, numbers, everyday objects</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Translator</h3>
+                    <p>Real-time translation between languages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Test</div>
+            <h2 class="section-title">Beta Feedback</h2>
+            <p class="section-text">
+                Ahead of the February 2026 launch, I've been hosting Zoom sessions with students and teachers to gather feedback. Five beta testers have used the app and shared their reactions:
+            </p>
+            
+            <div class="feedback-grid">
+                <div class="feedback-card">
+                    <p>"So cute!"</p>
+                </div>
+                <div class="feedback-card">
+                    <p>"This is fun."</p>
+                </div>
+                <div class="feedback-card">
+                    <p>"I want to play games on this though."</p>
+                </div>
+            </div>
+
+            <p class="section-text" style="margin-top: 2rem;">
+                The feedback confirmed our direction — and pointed toward the next iteration: gamification and interactive lessons.
+            </p>
+        </div>
+    </section>
+
+    <!-- Reflect Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">Reflect</div>
+            <h2 class="section-title">Lessons Learned</h2>
+            
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <h4>On Assumptions</h4>
+                    <p>Our mentors warned us: "Why build another English learning app when Duolingo exists?" It was a fair challenge. But the empathize and define phases gave us conviction. This community doesn't need another generic app. They need one that speaks their language — literally — and reflects their identity.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>On Process</h4>
+                    <p>If I were starting over, I'd create research training materials — videos or guides in Hakha-Chin explaining what research is and why we ask questions we seemingly already know the answers to. That friction cost us hours and could have been eased with preparation.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>On Identity</h4>
+                    <p>Interviewing my own community was strange and clarifying. I sat in the tension between insider and outsider — close enough to understand, distant enough to see patterns. It taught me that proximity is an asset, not a bias, when paired with rigor.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>On Building</h4>
+                    <p>This was my first deep integration of AI-assisted development tools. The learning curve was steep — but it collapsed what would have been months of traditional development into weeks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Next Section -->
+    <section class="content-wrapper">
+        <div class="content-card">
+            <div class="section-label">What's Next</div>
+            <h2 class="section-title">The Road Ahead</h2>
+            <p class="section-text">
+                ARFI is now entering a formal partnership with Chin State's education governance team.
+            </p>
+            
+            <div class="next-steps">
+                <div class="next-step-card">
+                    <div class="timeframe">6-Month Goal</div>
+                    <h4>Full Lesson Curriculum</h4>
+                    <p>Launch a comprehensive lesson curriculum with fundraising support to scale the platform.</p>
+                </div>
+                <div class="next-step-card">
+                    <div class="timeframe">12-Month Goal</div>
+                    <h4>Diaspora Connection</h4>
+                    <p>Build the reverse — a Hakha-Chin learning track for Chin American kids in the diaspora. One app, two directions, reconnecting a community split by geography.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <a href="bitbo.html" class="next-project-card">
+            <div>
+                <div class="next-label">Next Project</div>
+                <h2 class="next-title">Bitbo - Bitcoin Stats & Data</h2>
+            </div>
+            <div class="next-arrow">→</div>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Hlawn. Designed with passion.</p>
+        <p class="tagline">Designer by training. Researcher by instinct. Strategist by obsession.</p>
+    </footer>
+</body>
+</html>
